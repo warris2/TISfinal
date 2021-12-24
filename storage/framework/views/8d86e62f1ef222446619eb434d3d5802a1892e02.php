@@ -1,0 +1,45 @@
+<?php $__env->startSection('content'); ?>
+<div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="service-item">
+          <div class="icon">
+            <i class="fa fa-gear"></i>
+          </div>
+          <div class="down-content">
+            <h4>Convocatorias</h4>
+            <p>Si quiere ver las ultimas convocatorias de TIS ingrese aqui.</p>
+            <a href="<?php echo e(route('convocatorias')); ?>" class="filled-button">Ver mas</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-item">
+          <div class="icon">
+            <i class="fa fa-gear"></i>
+          </div>
+          <div class="down-content">
+            <h4>Empresas</h4>
+            <p>Para ver las empresas registradas o registrar una nueva ingrese aqui.</p>
+            <a href="<?php echo e(route('empresas.index')); ?>" class="filled-button">Ver mas</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-item">
+          <div class="icon">
+            <i class="fa fa-gear"></i>
+          </div>
+          <div class="down-content">
+            <h4>Acerca de nosotros</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis null.</p>
+            <a href="<?php echo e(route('register')); ?>" class="filled-button">Ver mas</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\TIS-proyect-integracion\sistemaTIS\resources\views/home.blade.php ENDPATH**/ ?>
