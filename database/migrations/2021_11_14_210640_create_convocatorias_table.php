@@ -20,6 +20,11 @@ class CreateConvocatoriasTable extends Migration
             $table->string('conv')->required();
             $table->timestamps();
             $table->date('f_fin')->required();
+            $table->timestamps();
+            $table->date('f_fin')->required();
+            
+
+            $table->foreignId('id_consultor')->nullable()->constrained('users')->cascadeOnUpdate()->nullOnDelete();
 
         });
     }

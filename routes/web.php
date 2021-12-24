@@ -1,10 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controller\SobreController;
 use App\Http\Controllers\EmpresaController;
 use App\Mail\NotificacionMailReceived;
 use Illuminate\Support\Facades\Mail;
+
+use App\Http\Controllers\GrupoController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -21,6 +25,7 @@ use Illuminate\Support\Facades\Mail;
 Route::get('/', function () {
     return view('welcome');
 });
+
 /* Rutas de los links--------------------------------------------------- */
 // Route::get('/addEmpresa',function(){
 //     return view('addEmpresa');
@@ -43,6 +48,12 @@ Route::get('/listaPropuesta',function(){
     return view('listaPropuesta');
 });
 
+
+/* Rutas de los usuarios--------------------------------------------------- */
+
+Route::resource('/users', UserController::class);
+
+Route::resource('/grupos', GrupoController::class);
 
 /*---------------------------------------------------------------------*/
 Auth::routes();
@@ -68,3 +79,8 @@ Route::get('/listaPropuesta', [App\Http\Controllers\SobreController::class, 'ind
 /*-----------------------Ruta envio de correos---------------------------*/
 
 Route::post('listaPropuesta', [App\Http\Controllers\MensajeController::class, 'store']);
+
+Route::resource('/empresas',App\Http\Controllers\EmpresaController::class);
+Route::resource('/convocatorias',App\Http\Controllers\ConvocatoriaController::class);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

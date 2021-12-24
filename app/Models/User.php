@@ -24,6 +24,7 @@ class User extends Authenticatable
         'num_telefono',
         'email',
         'password',
+        'tipo',
     ];
 
     /**
@@ -44,4 +45,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function empresas(){
+        return $this->belongsTo(Empresa::class,'id');
+    }
+    public function convocatorias()
+    {
+        return $this->hasMany(Convocatoria::class,'id');
+    }
+
 }

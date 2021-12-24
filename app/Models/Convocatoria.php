@@ -18,7 +18,14 @@ class Convocatoria extends Model
         'tit_conv'=> ['required', 'string', 'max:80'],
         'desc_conv'=> ['required', 'string'],
         'f_fin'=> ['required'],
+
         'conv'=> ['required', 'string'],
         );
+
+    );
+    public function users(){
+        return $this->belongsTo(User::class,'id');
+    }
+
     
 }
