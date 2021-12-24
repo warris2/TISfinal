@@ -38,7 +38,11 @@
         <header class="">
             <nav class="navbar navbar-expand-lg">
               <div class="container">
+
+                <a class="navbar-brand" href="{{ url('/') }}"><h2> <img src="{{url('rscextras/assets/images/logo_tis.png')}}" alt=""><em>TIS</em></h2></a>
+
                 <a class="navbar-brand" href="{{ url('/home') }}"><h2> <img src="{{url('rscextras/assets/images/logo_tis.png')}}" alt=""><em>TIS</em></h2></a>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
@@ -58,6 +62,20 @@
                                 </li>
                             @endif
                         @else
+
+                        <li class="{{ Request::path() == 'home' ? 'nav-item active' : 'nav-item' }}">
+                            <a class="nav-link " href="{{ url('/home') }}" >Inicio</a>
+                        </li>
+                        <li class="{{ Request::path() == 'convocatorias' ? 'nav-item active' : 'nav-item' }}">
+                            <a class="nav-link " href="{{ route('convocatorias') }}">Convocatorias</a>
+                        </li>
+                        <li class="{{ Request::path() == 'empresas' ? 'nav-item active' : 'nav-item' }}">
+                            <a class="nav-link" href="{{ route('empresas.index') }}"> Listar Empresas</a>
+                        </li>
+                        <li class="{{ Request::path() == 'empresas/create' ? 'nav-item active' : 'nav-item' }}">
+                            <a class="nav-link" href="{{ route('empresas.create') }}">Agregar Empresa</a>
+                        </li>            
+
                                     @if (Request::path() == 'home' || Request::path() == 'users' || Request::path() == 'grupos')
                                         <li class="nav-item active">    
                                     

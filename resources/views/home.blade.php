@@ -2,8 +2,9 @@
 
 @section('content')
 <div class="container">
-  
+
   <h2 class="text-center">Bienvenido {{ Auth::user()->name }}</h2>
+
     <div class="row">
       <div class="col-md-4">
         <div class="service-item">
@@ -13,7 +14,11 @@
           <div class="down-content">
             <h4>Convocatorias</h4>
             <p>Si quiere ver las ultimas convocatorias de TIS ingrese aqui.</p>
+
+            <a href="{{ route('convocatorias') }}" class="filled-button">Ver mas</a>
+
             <a href="{{ route('convocatorias.index') }}" class="filled-button">Ver mas</a>
+
           </div>
         </div>
       </div>

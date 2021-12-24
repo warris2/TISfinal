@@ -25,8 +25,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-
             $table->foreignId('id_grupo')->nullable()->constrained('empresas')->cascadeOnUpdate()->nullOnDelete();
+
         });
     }
 

@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
+
+use Illuminate\Http\Request;
+use App\Models\Empresa;
 use Illuminate\Http\Request;
 use App\Models\Empresa;
 use App\Models\User;
@@ -12,6 +16,7 @@ use Illuminate\Support\Facades\DB;
 
 class EmpresaController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -29,12 +34,21 @@ class EmpresaController extends Controller
 
     public function create()
     {
+
+        $empresas = new Empresa();
+        return view('empresa.create', compact('empresas'));
+
         $empresa = new Empresa();
         return view('empresa.create', compact('empresa'));
+
     }
 
     public function store(Request $request)
     {
+
+        request()->validate(Empresa::$rules);
+
+        $empresas = Empresa::create($request->all());
         $id = Auth::user()->id; 
         request()->validate(Empresa::$rules);
         $user = User::find($id);
@@ -47,23 +61,37 @@ class EmpresaController extends Controller
     }
     public function show($id)
     {
+
+        $empresas = Empresa::find($id);
+
         $empresa = Empresa::find($id);
+
 
         return view('empresa.show', compact('empresa'));
     }
 
     public function edit($id)
     {
+
+        $empresas = Empresa::find($id);
         $empresa = Empresa::find($id);
 
         return view('empresa.edit', compact('empresa'));
     }
+
+
+    public function update(Request $request, Empresa $empresas)
+    {
+        request()->validate(Empresa::$rules);
+
+        $empresas->update($request->all());
 
     public function update(Request $request, Empresa $empresa)
     {
         request()->validate(Empresa::$rules);
 
         $empresa->update($request->all());
+
 
         return redirect()->route('empresas.index')
             ->with('success', 'Empresa actualizada exitosamente');
@@ -87,6 +115,11 @@ class EmpresaController extends Controller
             'email_empresa'=> ['required', 'string', 'max:50', 'unique:empresas','email'],
             'direccion'=> ['string', 'max:80'],
             'telf_empresa'=> ['required','integer','digits_between:9,9'],
+            'socios'=> ['required', 'string', 'max:255'],
+        ]);
+    }
+
+   
             'socios'=> ['string', 'max:255'],
         ]);
     }

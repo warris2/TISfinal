@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('template_title')
+
+    {{ $empresa->name ?? 'Ver Empresa' }}
+
     {{ $empresa->nombre_empresa ?? 'Ver Empresa' }}
+
 @endsection
 
 @section('content')
@@ -13,6 +17,10 @@
                         <div class="float-left">
                             <span class="card-title">Ver Empresa</span>
                         </div>
+
+                        <div class="float-right">
+                            <a class="btn btn-primary" href="{{ route('empresas.index') }}"> Volver</a>
+
                         <div class="float-right">                            
                             <form action="{{ route('empresas.destroy',$empresa->id) }}" method="POST">                        
                             @if (Auth::user()->id_grupo == $empresa->id)                                                     
@@ -25,10 +33,13 @@
                             
                             <a class="btn btn-primary" href="{{ route('empresas.index') }}"> Volver</a>
                         </form>
+
                         </div>
                     </div>
 
                     <div class="card-body">
+
+                    @foreach($empresas as $empresa)
 
                         <div class="form-group">
                             <strong>Nombre de la empresa</strong>
@@ -58,6 +69,9 @@
                             <strong>Socios</strong>
                             {{ $empresa->socios }}
                         </div>
+                        
+                    @endforeach    
+
                     </div>
                 </div>
             </div>

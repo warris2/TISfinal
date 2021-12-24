@@ -17,6 +17,9 @@ class CreateConvocatoriasTable extends Migration
             $table->increments('id');
             $table->string('tit_conv')->required();
             $table->string('desc_conv')->required();
+            $table->string('conv')->required();
+            $table->timestamps();
+            $table->date('f_fin')->required();
             $table->timestamps();
             $table->date('f_fin')->required();
             

@@ -119,7 +119,11 @@
                 <div class="down-content">
                   <h4>Convocatorias</h4>
                   <p>Si quiere ver las ultimas convocatorias de TIS ingrese aqui.</p>
+
+                  <a href="{{ route('convocatorias') }}" class="filled-button">Ver mas</a>
+
                   <a href="{{ route('convocatorias.index') }}" class="filled-button">Ver mas</a>
+
                 </div>
               </div>
             </div>

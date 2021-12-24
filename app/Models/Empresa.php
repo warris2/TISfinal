@@ -25,6 +25,11 @@ class Empresa extends Model
         'rep_empresa'=> ['required', 'string', 'max:50'],
         'email_empresa'=> ['required', 'string', 'max:50', 'unique:empresas','email'],
         'direccion'=> ['string', 'max:80'],
+
+        'telf_empresa'=> ['required','integer','digits_between:9,9'],
+        'socios'=> ['required', 'string', 'max:255'],
+    );
+
         'telf_empresa'=> ['required','integer','digits_between:7,8'],
         'socios'=> ['string', 'max:255'],
     );
